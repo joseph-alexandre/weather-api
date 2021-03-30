@@ -109,6 +109,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+virtualenv/
+
+#VSCode History plugin 
+.history/
 
 # Spyder project settings
 .spyderproject
