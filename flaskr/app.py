@@ -5,7 +5,13 @@ import pytz
 from datetime import datetime
 
 
-@app.route("/listar_historico")
+@app.route("/")
+def home():
+    return "Bem-vindo a API. Utilize os endpoints /listar_historico e /cidade/{nome_cidade}."
+
+
+# Falta colocar opções de pesquisas, por exemplo, pesquisar histórico pela data e afins
+@app.route("/listar_historico", methods=["GET"])
 def listar_historico():
     historicos = db.session.query(Historico).all()
     retorno = []
@@ -24,7 +30,7 @@ def adicionar_historico(historico):
 @app.route("/cidade/<nome_cidade>", methods=["GET"])
 def buscar_tempo_cidade(nome_cidade):
     try:
-        dicionario = parse_to_historico(
+        dicionario = parse_to_dictionary(
             mgr.weather_at_place(nome_cidade))
 
         historico = Historico.parse_dict_to_historico(dicionario)
@@ -33,16 +39,16 @@ def buscar_tempo_cidade(nome_cidade):
         return dicionario
     except TimeoutError:
         return "A Weather API demorou demais para responder. Tente novamente."
+    # Necessário validar as outras exceções aqui
 
 
-def parse_to_historico(observation):
+def parse_to_dictionary(observation):
 
-    timezone = pytz.timezone("America/Sao_Paulo")
     temperatura = observation.weather.temperature(unit="celsius")
     vento = observation.weather.wind(unit="km_hour").get("speed")
     data_referencia = observation.weather.reference_time(
-        timeformat="date").astimezone(timezone)
-    data_consulta = datetime.now().astimezone(timezone)
+        timeformat="date")
+    data_consulta = datetime.now()
 
     return {
         "nome_da_cidade": observation.location.name,
