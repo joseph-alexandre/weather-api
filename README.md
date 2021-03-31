@@ -15,12 +15,12 @@ Projeto com o propósito de aprendizado na linguagem Python, o microframework Fl
 * DBeaver
 * PIP
 
-### Dependências do Projeto
+## Dependências do Projeto
 Todas as dependências estão listadas no requirements.txt, porém há o destaque na lib PyOWM, utilizada no projeto. Ela funciona como um wrapper das API's da plataforma OpenWeatherMap. A sua documentação pode ser consultada [aqui](https://pyowm.readthedocs.io/en/latest/index.html#).
 
 A collection do Postman pode ser baixada por [aqui](https://app.blackhole.run/#MVyBd58CbO1LaaMFDDuKJVczUHF5E2mkXVrcPPJPWFw7).
 
-### Estrutura
+## Estrutura
 O arquivo config.py é responsável pela importação e configuração da conexão com o banco de dados. O client.py, possui o propósito também de configuração, porém do objeto da lib PyOWM, a qual será utilizado no restante do projeto. No arquivo models.py, possui o mapeamento da tabela Histórico, cujo servirá para visualizar as consultas realizadas anteriormente na API. O arquivo app.py é o arquivo principal, onde fica mapeado os endpoint's e alguns métodos auxiliares para realizar de/para de objeto para dicionário, por exemplo. 
 
 
