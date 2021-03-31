@@ -1,12 +1,13 @@
 from config import *
 
 
+# Falta tratar o timezone das datas
 class Historico (db.Model):
     __tablename__ = 'historico'
     id = Column(Integer, primary_key=True)
     nome_da_cidade = Column(String(50))
     sigla_do_pais = Column(String(2))
-    sensacao_termica = Column(Float(asdecimal=True))
+    sensacao_termica = Column(Float(asdecimal=True, decimal_return_scale=2))
     temperatura = Column(Float())
     temperatura_maxima = Column(Float())
     temperatura_minima = Column(Float())
@@ -31,8 +32,8 @@ class Historico (db.Model):
             "umidade": self.umidade,
             "status": self.status,
             "vento": '{0:.3g}'.format(self.vento),
-            "data_hora_referencia": self.data_hora_referencia,
-            "data_hora_consulta": self.data_hora_consulta
+            "data_hora_referencia": self.data_hora_referencia.strftime('%d/%m/%Y %H:%M'),
+            "data_hora_consulta": self.data_hora_consulta.strftime('%d/%m/%Y %H:%M')
         }
 
     def __init__(self, nome_cidade, sigla_do_pais, sensacao_termica, temperatura, temperatura_maxima, temperatura_minima, umidade, status, vento, data_hora_referencia, data_hora_consulta):
