@@ -62,5 +62,5 @@ E então, execute a aplicação:
 * Implementar outros endpointers de consulta, adicionando parâmetros para uma consulta mais precisa; atualmente é utilizado apenas o nome da cidade.
 * Documentação da API, descrição aprofundada do que cada endpoint retorna e seus parâmetros.
 * Tratamento de TimeZone e formatação de pontos flutuantes em alguns campos.
-
+* Implementar a consulta de previsão dos próximos cinco dias.
 
