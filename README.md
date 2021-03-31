@@ -43,6 +43,9 @@ A seguir, ative-o:
 Ainda na raiz do projeto e com o ambiente virtual ativado, utilize o comando a seguir para instalar as dependências:
 > pip install -r requirements.txt
 
+Criar um arquivo .env dentro da raíz do projeto, informando a key da API do OpenWeatherMap, no formato a seguir:
+> API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXX"
+
 Agora, suba o PostgreSQL:
 > docker-compose up database
 
