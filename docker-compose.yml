@@ -1,0 +1,18 @@
+version: "3"
+
+volumes:
+  postgresql_data_dev:
+    driver: local
+
+services:
+  database:
+    container_name: weather_db_dev
+    image: postgres:12.3
+    environment:
+      POSTGRES_DB: weather
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: senhatop#
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgresql_data_dev:/var/lib/postgresql/data
